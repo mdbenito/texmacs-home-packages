@@ -1,4 +1,4 @@
-<TeXmacs|1.99.5>
+<TeXmacs|1.99.4>
 
 <style|source>
 
@@ -23,15 +23,29 @@
 
   <assign|title-color|white>
 
+  <assign|footer-color|white>
+
   <assign|math-color|#0C2754bf>
 
   <assign|strong-color|#0C2754bf>
 
   <assign|tit-border-color|#307fcc>
 
-  <assign|screens-footer|>
+  <assign|ftr-border-color|#307fcc>
+
+  <assign|screens-running-footer|>
 
   <assign|screens-footer-color|<value|title-bar-color>>
+
+  \;
+
+  <drd-props|footer-color|macro-parameter|color>
+
+  <drd-props|tit-border-color|macro-parameter|color>
+
+  <drd-props|ftr-border-color|macro-parameter|color>\ 
+
+  <drd-props|screens-footer-color|macro-parameter|color>
 
   <\active*>
     <\src-comment>
@@ -80,23 +94,23 @@
   <assign|screens-summary|<macro|body|<if|<greater|<screens-arity|<quote-arg|body>>|0>|<plus|<screens-index|<quote-arg|body>>|1>
   of <screens-arity|<quote-arg|body>>>>>
 
-  <assign|ftr|<macro|left|center|right|<with|color|<value|tit-border-color>|<tabular*|<tformat|<twith|table-width|1par>|<twith|table-hmode|exact>|<cwith|1|1|1|-1|cell-background|<screens-footer-color>>|<cwith|1|1|1|1|cell-halign|c>|<style-with|src-compact|all|<twith|table-valign|b>>|<cwith|1|1|1|1|cell-tsep|0em>|<style-with|src-compact|all|<cwith|1|1|1|1|cell-bsep|0.004pag>>|<cwith|1|1|1|1|cell-tborder|0.001pag>|<cwith|1|1|1|1|cell-height|0.03pag>|<cwith|1|1|1|1|cell-vmode|auto>|<twith|table-height|0.02pag>|<twith|table-vmode|exact>|<cwith|1|1|1|1|cell-hyphen|t>|<twith|table-lsep|0>|<twith|table-rsep|0>|<twith|table-bsep|0>|<twith|table-tsep|0>|<twith|table-bborder|0>|<table|<row|<\cell>
-    <with|color|<title-color>|math-color|<title-color>|font-size|0.59|<arg|left><htab|5mm><arg|center><htab|5mm><with|font-size|0.39|<title-right|<arg|right>>>>
+  <assign|ftr|<macro|left|center|right|<with|color|<value|ftr-border-color>|<tabular*|<tformat|<twith|table-width|1par>|<twith|table-hmode|exact>|<cwith|1|1|1|-1|cell-background|<screens-footer-color>>|<cwith|1|1|1|1|cell-halign|c>|<style-with|src-compact|all|<twith|table-valign|b>>|<cwith|1|1|1|1|cell-tsep|0em>|<style-with|src-compact|all|<cwith|1|1|1|1|cell-bsep|0.004pag>>|<cwith|1|1|1|1|cell-tborder|0.001pag>|<cwith|1|1|1|1|cell-height|0.03pag>|<cwith|1|1|1|1|cell-vmode|auto>|<twith|table-height|0.02pag>|<twith|table-vmode|exact>|<cwith|1|1|1|1|cell-hyphen|t>|<twith|table-lsep|0>|<twith|table-rsep|0>|<twith|table-bsep|0>|<twith|table-tsep|0>|<twith|table-bborder|0>|<table|<row|<\cell>
+    <with|color|<value|footer-color>|math-color|<value|title-color>|font-size|0.59|<arg|left><htab|5mm><arg|center><htab|5mm><with|font-size|0.39|<arg|right>>>
   </cell>>>>>>>>
 
   <assign|tit|<\macro|head>
     <\with|par-left|<minus|<value|page-screen-left>>|par-right|<minus|<value|page-screen-right>>|par-par-sep|0fn|par-sep|0fn|par-ver-sep|0fn|par-line-sep|0fn>
       <shift|<with|color|<value|tit-border-color>|<resize|<tabular*|<tformat|<twith|table-width|1par>|<twith|table-hmode|exact>|<cwith|1|1|1|-1|cell-background|<title-bar-color>>|<cwith|1|1|1|1|cell-halign|c>|<cwith|1|1|1|1|cell-hyphen|t>|<twith|table-valign|T>|<twith|table-vmode|auto>|<cwith|1|1|1|1|cell-height|0.05pag>|<cwith|1|1|1|1|cell-vmode|exact>|<cwith|1|1|1|1|cell-bborder|0.002pag>|<table|<row|<\cell>
-        <with|color|<title-color>|math-color|<title-color>|font-series|bold|<title-left|<arg|head>><htab|5mm><arg|head><htab|5mm><phantom|<title-right|<arg|head>>>>
+        <with|color|<title-color>|math-color|<title-color>|font-series|bold|<title-left|<arg|head>><htab|5mm><arg|head><htab|5mm><phantom|<title-right|xxx>>>
       </cell>>>>>||0em||>>|0mm|<value|page-screen-top>>
 
-      <shift|<ftr|<screens-footer>|<arg|head>|<arg|head>>|0mm|<minus|0.965pag>>
+      <shift|<ftr|<title-left|xxx>|<value|screens-running-footer>|<title-right|xxx>>|0mm|<minus|0.965pag>>
     </with>
   </macro>>
 
   <assign|btit|<\macro|head>
     <\with|par-left|<minus|<value|page-screen-left>>|par-right|<minus|<value|page-screen-right>>|par-par-sep|0fn|par-sep|0fn|par-ver-sep|0fn|par-line-sep|0fn|par-hor-sep|0fn|par-mode|left>
-      <shift|<ftr|<screens-footer>|<arg|head>|<arg|head>>|0mm|<minus|0.995pag>>
+      <shift|<ftr|<value|screens-running-footer>|<arg|head>|<title-right|xxx>>|0mm|<minus|0.995pag>>
     </with>
   </macro>>
 </body>
