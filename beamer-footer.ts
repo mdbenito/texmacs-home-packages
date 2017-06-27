@@ -141,14 +141,14 @@
   content (the page counter) is disabled with a phantom macro. Instead it is
   placed in the footer
 
-  <assign|tit|<\macro|head>
+  <assign|tit|<\macro|head|foot>
     <\with|par-left|<minus|<value|page-screen-left>>|par-right|<minus|<value|page-screen-right>>|par-par-sep|0fn|par-sep|0fn|par-ver-sep|0fn|par-line-sep|0fn>
       <\reduce-by>
-        <shift|<with|color|<value|tit-border-color>|<resize|<tabular*|<tformat|<twith|table-width|1par>|<twith|table-hmode|exact>|<cwith|1|1|1|-1|cell-background|<title-bar-color>>|<cwith|1|1|1|1|cell-halign|c>|<cwith|1|1|1|1|cell-hyphen|t>|<twith|table-valign|T>|<twith|table-vmode|auto>|<cwith|1|1|1|1|cell-height|0.05pag>|<cwith|1|1|1|1|cell-vmode|exact>|<cwith|1|1|1|1|cell-bborder|<value|tit-border-height>>|<table|<row|<\cell>
-          <with|color|<value|title-color>|math-color|<value|title-color>|font-series|bold|<phantom|<title-left|<arg|head>>><htab|5mm><arg|head><htab|5mm><phantom|<title-right|xxx>>>
+        <shift|<with|color|<value|tit-border-color>|<resize|<tabular*|<tformat|<twith|table-width|1par>|<twith|table-hmode|exact>|<cwith|1|1|1|-1|cell-background|<value|title-bar-color>>|<cwith|1|1|1|1|cell-halign|c>|<cwith|1|1|1|1|cell-hyphen|t>|<twith|table-valign|T>|<twith|table-vmode|auto>|<cwith|1|1|1|1|cell-height|0.05pag>|<cwith|1|1|1|1|cell-vmode|exact>|<cwith|1|1|1|1|cell-bborder|<value|tit-border-height>>|<table|<row|<\cell>
+          <with|color|<value|title-color>|math-color|<value|title-color>|font-series|bold|<title-left|<arg|head>><htab|5mm><arg|head><htab|5mm><phantom|<title-right|xxx>>>
         </cell>>>>>||0em||>>|0mm|<value|page-screen-top>>
 
-        <shift|<ftr|<title-left|xxx>|<value|screens-running-footer>|<title-right|xxx>>|0mm|<minus|0.959pag>>
+        <shift|<ftr|<value|screens-running-footer>|<arg|foot>|<title-right|xxx>>|0mm|<minus|0.959pag>>
       <|reduce-by>
         1ex
       </reduce-by>
