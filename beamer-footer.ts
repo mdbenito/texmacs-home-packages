@@ -78,13 +78,13 @@
     <\src-comment>
       Macro definitions.
 
-      cover-title and cover-footer are helper macros for cover, which is the
-      one supposed to be used directly in the file
+      cover-title and cover-footer are independent of cover and may be used
+      for a simpler cover page.
     </src-comment>
   </active*>
 
   <assign|cover-title|<\macro|body>
-    <\with|ornament-shape|classic|ornament-color|<value|title-bar-color>|ornament-sunny-color|<value|tit-border-color>|ornament-vpadding|1.7bls>
+    <\with|ornament-shape|classic|ornament-color|<value|title-bar-color>|ornament-sunny-color|<value|tit-border-color>|ornament-vpadding|1.7bls|ornament-shadow-color|<value|tit-border-color>>
       <\ornamented>
         <with|color|<value|title-color>|<htab|5mm><really-huge|<arg|body>><htab|5mm>>
       </ornamented>
@@ -92,21 +92,21 @@
   </macro>>
 
   <assign|cover-footer|<\macro|left|right>
-    <\with|ornament-shape|classic|ornament-color|<screens-footer-color>|ornament-sunny-color|<value|tit-border-color>>
+    <\with|ornament-shape|classic|ornament-color|<value|footer-bar-color>|ornament-sunny-color|<value|ftr-border-color>|ornament-shadow-color|<value|ftr-border-color>>
       <\ornamented>
-        <em|<with|color|white|<very-small|<arg|left>><htab|5mm><very-small|<arg|right>>>>
+        <em|<with|color|<value|footer-color>|<very-small|<arg|left>><htab|5mm><very-small|<arg|right>>>>
       </ornamented>
     </with>
   </macro>>
 
   <assign|cover|<\macro|title|author|sub-left|sub-right>
     <\with|par-par-sep|0fn|par-sep|0fn|par-ver-sep|0fn|par-line-sep|0fn>
-      <with|color|<value|tit-border-color>|<resize|<tabular*|<tformat|<twith|table-width|1par>|<twith|table-hmode|exact>|<cwith|1|1|1|-1|cell-background|<title-bar-color>>|<cwith|1|1|1|1|cell-halign|c>|<cwith|1|1|1|1|cell-hyphen|t>|<twith|table-valign|T>|<twith|table-vmode|auto>|<cwith|1|1|1|1|cell-bborder|5px>|<cwith|1|1|1|1|cell-height|0.2pag>|<cwith|1|1|1|1|cell-vmode|exact>|<cwith|1|1|1|1|cell-valign|c>|<table|<row|<\cell>
-        <with|color|<title-color>|math-color|<title-color>|font-series|bold|font-size|1.5|<htab|5mm><arg|title><htab|5mm>>
+      <with|color|<value|tit-border-color>|<resize|<tabular*|<tformat|<twith|table-width|1par>|<twith|table-hmode|exact>|<cwith|1|1|1|-1|cell-background|<value|title-bar-color>>|<cwith|1|1|1|1|cell-halign|c>|<cwith|1|1|1|1|cell-hyphen|t>|<twith|table-valign|T>|<twith|table-vmode|auto>|<cwith|1|1|1|1|cell-bborder|5px>|<cwith|1|1|1|1|cell-height|0.2pag>|<cwith|1|1|1|1|cell-vmode|exact>|<cwith|1|1|1|1|cell-valign|c>|<table|<row|<\cell>
+        <with|color|<value|title-color>|math-color|<value|title-color>|font-series|bold|font-size|1.5|<htab|5mm><arg|title><htab|5mm>>
       </cell>>>>>||0em||>>
 
-      <shift|<with|color|<value|tit-border-color>|<tabular*|<tformat|<twith|table-width|1par>|<twith|table-hmode|exact>|<cwith|1|1|1|-1|cell-background|<screens-footer-color>>|<cwith|1|1|1|1|cell-halign|c>|<cwith|1|1|1|1|cell-hyphen|t>|<twith|table-valign|b>|<twith|table-height|0.02pag>|<twith|table-vmode|exact>|<cwith|1|1|1|1|cell-tsep|0em>|<cwith|1|1|1|1|cell-bsep|0em>|<cwith|1|1|1|1|cell-tborder|5px>|<table|<row|<\cell>
-        <with|color|<title-color>|math-color|<title-color>|font-size|0.59|<arg|sub-left><htab|5mm><arg|sub-right>>
+      <shift|<with|color|<value|tit-border-color>|<tabular*|<tformat|<twith|table-width|1par>|<twith|table-hmode|exact>|<cwith|1|1|1|-1|cell-background|<value|footer-bar-color>>|<cwith|1|1|1|1|cell-halign|c>|<cwith|1|1|1|1|cell-hyphen|t>|<twith|table-valign|b>|<twith|table-height|0.02pag>|<twith|table-vmode|exact>|<cwith|1|1|1|1|cell-tsep|0em>|<cwith|1|1|1|1|cell-bsep|0em>|<cwith|1|1|1|1|cell-tborder|5px>|<table|<row|<\cell>
+        <with|color|<value|title-color>|math-color|<value|title-color>|font-size|0.59|<arg|sub-left><htab|5mm><arg|sub-right>>
       </cell>>>>>>|0mm|<minus|2h|1pag>>
 
       <shift|<small|<strong|<arg|author>>>|<minus|0.5par|0.5w>|<minus|0.5pag>>
@@ -134,12 +134,12 @@
   of <screens-arity|<quote-arg|body>>>>>
 
   <assign|ftr|<macro|left|center|right|<with|color|<value|ftr-border-color>|<tabular*|<tformat|<twith|table-width|1par>|<twith|table-hmode|exact>|<cwith|1|1|1|-1|cell-background|<value|footer-bar-color>>|<cwith|1|1|1|1|cell-halign|c>|<cwith|1|1|1|1|cell-tsep|0ex>|<style-with|src-compact|all|<cwith|1|1|1|1|cell-bsep|0em>>|<cwith|1|1|1|1|cell-tborder|<value|ftr-border-height>>|<cwith|1|1|1|1|cell-vmode|auto>|<twith|table-height|0.03pag>|<twith|table-vmode|exact>|<cwith|1|1|1|1|cell-hyphen|t>|<twith|table-lsep|0>|<twith|table-rsep|0>|<twith|table-bsep|0>|<twith|table-tsep|0>|<twith|table-bborder|0>|<cwith|1|1|1|1|cell-valign|c>|<twith|table-valign|f>|<table|<row|<\cell>
-    <with|color|<value|footer-color>|math-color|<value|title-color>|font-size|0.59|<arg|left><htab|5mm><arg|center><htab|5mm><with|font-size|0.39|<arg|right>>>
+    <with|color|<value|footer-color>|math-color|<value|footer-color>|font-size|0.59|<arg|left><htab|5mm><arg|center><htab|5mm><with|font-size|0.39|<arg|right>>>
   </cell>>>>>>>>
 
-  --- The macro constructing the top and bottom bars. Note that the top left
-  and right content is disabled with a phantom macro. Instead it is placed in
-  the footer
+  --- The macro constructing the top and bottom bars. Note that the top right
+  content (the page counter) is disabled with a phantom macro. Instead it is
+  placed in the footer
 
   <assign|tit|<\macro|head>
     <\with|par-left|<minus|<value|page-screen-left>>|par-right|<minus|<value|page-screen-right>>|par-par-sep|0fn|par-sep|0fn|par-ver-sep|0fn|par-line-sep|0fn>
