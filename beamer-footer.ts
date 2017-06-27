@@ -5,9 +5,18 @@
 <\body>
   <\active*>
     <\src-title>
-      <src-style-file|beamer-footer|1.0>
+      <src-style-file|beamer-footer|1.2>
 
       <src-purpose|Footers and covers for the beamer style>
+
+      <src-copyright|2015-2017|Miguel de Benito Delgado >
+
+      <\src-license>
+        This software falls under the <hlink|GNU general public license,
+        version 3 or later|$TEXMACS_PATH/LICENSE>. It comes WITHOUT ANY
+        WARRANTY WHATSOEVER. You should have received a copy of the license
+        which the software. If not, see <hlink|http://www.gnu.org/licenses/gpl-3.0.html|http://www.gnu.org/licenses/gpl-3.0.html>.
+      </src-license>
     </src-title>
   </active*>
 
@@ -15,29 +24,35 @@
 
   <\active*>
     <\src-comment>
-      Style parameters.
+      Style parameters. These can be adjusted in Focus -\<gtr\>
+      Preferences<compound|math|>
     </src-comment>
   </active*>
 
-  <assign|title-bar-color|dark grey>
+  <assign|title-bar-color|dark grey>\ 
 
-  <assign|title-color|white>
+  <assign|title-color|white> --- Text color in the top title bar
 
-  <assign|footer-color|white>
+  <assign|tit-border-color|#307fcc> --- Color of the bottom border for the
+  top title bar
+
+  <assign|footer-bar-color|<value|title-bar-color>>
+
+  <assign|footer-color|white> --- Text color in the bottom bar
+
+  <assign|ftr-border-color|#307fcc> --- Color of the bottom border for the
+  bottom bar
 
   <assign|math-color|#0C2754bf>
 
   <assign|strong-color|#0C2754bf>
 
-  <assign|tit-border-color|#307fcc>
-
-  <assign|ftr-border-color|#307fcc>
-
-  <assign|screens-running-footer|>
-
-  <assign|screens-footer-color|<value|title-bar-color>>
+  <assign|screens-running-footer|> --- Content of the middle section for all
+  bottom bars
 
   \;
+
+  --- Add our parameters to the configurable style parameters
 
   <drd-props|footer-color|macro-parameter|color>
 
@@ -45,11 +60,16 @@
 
   <drd-props|ftr-border-color|macro-parameter|color>\ 
 
-  <drd-props|screens-footer-color|macro-parameter|color>
+  <drd-props|footer-bar-color|macro-parameter|color>
+
+  <drd-props|screens-running-footer|macro-parameter|text>
 
   <\active*>
     <\src-comment>
       Macro definitions.
+
+      cover-title and cover-footer are helper macros for cover, which is the
+      one supposed to be used directly in the file
     </src-comment>
   </active*>
 
@@ -94,17 +114,25 @@
   <assign|screens-summary|<macro|body|<if|<greater|<screens-arity|<quote-arg|body>>|0>|<plus|<screens-index|<quote-arg|body>>|1>
   of <screens-arity|<quote-arg|body>>>>>
 
-  <assign|ftr|<macro|left|center|right|<with|color|<value|ftr-border-color>|<tabular*|<tformat|<twith|table-width|1par>|<twith|table-hmode|exact>|<cwith|1|1|1|-1|cell-background|<screens-footer-color>>|<cwith|1|1|1|1|cell-halign|c>|<style-with|src-compact|all|<twith|table-valign|b>>|<cwith|1|1|1|1|cell-tsep|0em>|<style-with|src-compact|all|<cwith|1|1|1|1|cell-bsep|0.004pag>>|<cwith|1|1|1|1|cell-tborder|0.001pag>|<cwith|1|1|1|1|cell-height|0.03pag>|<cwith|1|1|1|1|cell-vmode|auto>|<twith|table-height|0.02pag>|<twith|table-vmode|exact>|<cwith|1|1|1|1|cell-hyphen|t>|<twith|table-lsep|0>|<twith|table-rsep|0>|<twith|table-bsep|0>|<twith|table-tsep|0>|<twith|table-bborder|0>|<table|<row|<\cell>
+  <assign|ftr|<macro|left|center|right|<with|color|<value|ftr-border-color>|<tabular*|<tformat|<twith|table-width|1par>|<twith|table-hmode|exact>|<cwith|1|1|1|-1|cell-background|<value|footer-bar-color>>|<cwith|1|1|1|1|cell-halign|c>|<style-with|src-compact|all|<twith|table-valign|b>>|<cwith|1|1|1|1|cell-tsep|0em>|<style-with|src-compact|all|<cwith|1|1|1|1|cell-bsep|0.004pag>>|<cwith|1|1|1|1|cell-tborder|0.001pag>|<cwith|1|1|1|1|cell-height|0.03pag>|<cwith|1|1|1|1|cell-vmode|auto>|<twith|table-height|0.02pag>|<twith|table-vmode|exact>|<cwith|1|1|1|1|cell-hyphen|t>|<twith|table-lsep|0>|<twith|table-rsep|0>|<twith|table-bsep|0>|<twith|table-tsep|0>|<twith|table-bborder|0>|<table|<row|<\cell>
     <with|color|<value|footer-color>|math-color|<value|title-color>|font-size|0.59|<arg|left><htab|5mm><arg|center><htab|5mm><with|font-size|0.39|<arg|right>>>
   </cell>>>>>>>>
 
+  --- The macro constructing the top and bottom bars. Note that the top left
+  and right content is disabled with a phantom macro. Instead it is placed in
+  the footer
+
   <assign|tit|<\macro|head>
     <\with|par-left|<minus|<value|page-screen-left>>|par-right|<minus|<value|page-screen-right>>|par-par-sep|0fn|par-sep|0fn|par-ver-sep|0fn|par-line-sep|0fn>
-      <shift|<with|color|<value|tit-border-color>|<resize|<tabular*|<tformat|<twith|table-width|1par>|<twith|table-hmode|exact>|<cwith|1|1|1|-1|cell-background|<title-bar-color>>|<cwith|1|1|1|1|cell-halign|c>|<cwith|1|1|1|1|cell-hyphen|t>|<twith|table-valign|T>|<twith|table-vmode|auto>|<cwith|1|1|1|1|cell-height|0.05pag>|<cwith|1|1|1|1|cell-vmode|exact>|<cwith|1|1|1|1|cell-bborder|0.002pag>|<table|<row|<\cell>
-        <with|color|<title-color>|math-color|<title-color>|font-series|bold|<title-left|<arg|head>><htab|5mm><arg|head><htab|5mm><phantom|<title-right|xxx>>>
-      </cell>>>>>||0em||>>|0mm|<value|page-screen-top>>
+      <\reduce-by>
+        <shift|<with|color|<value|tit-border-color>|<resize|<tabular*|<tformat|<twith|table-width|1par>|<twith|table-hmode|exact>|<cwith|1|1|1|-1|cell-background|<title-bar-color>>|<cwith|1|1|1|1|cell-halign|c>|<cwith|1|1|1|1|cell-hyphen|t>|<twith|table-valign|T>|<twith|table-vmode|auto>|<cwith|1|1|1|1|cell-height|0.05pag>|<cwith|1|1|1|1|cell-vmode|exact>|<cwith|1|1|1|1|cell-bborder|0.002pag>|<table|<row|<\cell>
+          <with|color|<value|title-color>|math-color|<value|title-color>|font-series|bold|<phantom|<title-left|<arg|head>>><htab|5mm><arg|head><htab|5mm><phantom|<title-right|xxx>>>
+        </cell>>>>>||0em||>>|0mm|<value|page-screen-top>>
 
-      <shift|<ftr|<title-left|xxx>|<value|screens-running-footer>|<title-right|xxx>>|0mm|<minus|0.965pag>>
+        <shift|<ftr|<title-left|xxx>|<value|screens-running-footer>|<title-right|xxx>>|0mm|<minus|0.965pag>>
+      <|reduce-by>
+        1ex
+      </reduce-by>
     </with>
   </macro>>
 
