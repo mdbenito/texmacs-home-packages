@@ -36,33 +36,43 @@
   <assign|tit-border-color|#307fcc> --- Color of the bottom border for the
   top title bar
 
+  <assign|tit-border-height|0.002pag> --- Height of the bottom border for the
+  top title bar
+
   <assign|footer-bar-color|<value|title-bar-color>>
 
-  <assign|footer-color|white> --- Text color in the bottom bar
+  <assign|footer-color|white> --- Text color in the footer bar
 
   <assign|ftr-border-color|#307fcc> --- Color of the bottom border for the
-  bottom bar
+  footer bar
+
+  <assign|ftr-border-height|0.001pag> --- Height of the top border for the
+  footer bar
 
   <assign|math-color|#0C2754bf>
 
   <assign|strong-color|#0C2754bf>
 
   <assign|screens-running-footer|> --- Content of the middle section for all
-  bottom bars
+  footers in the presentation
 
   \;
 
   --- Add our parameters to the configurable style parameters
 
-  <drd-props|footer-color|macro-parameter|color>
-
   <drd-props|tit-border-color|macro-parameter|color>
 
-  <drd-props|ftr-border-color|macro-parameter|color>\ 
+  <drd-props|tit-border-height|macro-parameter|length>
+
+  <drd-props|footer-color|macro-parameter|color>
 
   <drd-props|footer-bar-color|macro-parameter|color>
 
-  <drd-props|screens-running-footer|macro-parameter|text>
+  <drd-props|ftr-border-color|macro-parameter|color>
+
+  <drd-props|ftr-border-height|macro-parameter|length>
+
+  <drd-props|screens-running-footer|macro-parameter|string>
 
   <\active*>
     <\src-comment>
@@ -103,18 +113,27 @@
     </with>
   </macro>>
 
+  \;
+
+  <drd-props|cover-title|border|no>
+
+  <drd-props|cover-footer|border|no>
+
+  <drd-props|cover|border|no>
+
   <\active*>
     <\src-comment>
-      Titles and footers for the slides. Changing the size of title-right
-      didn't work: as a workaround we redefine screens-summary without any
-      formatting\ 
+      Titles and footers for the slides.
     </src-comment>
   </active*>
+
+  --- We redefine screens-summary without any formatting to change its size
+  in the footer. This macro is used behind the scenes by title-right.
 
   <assign|screens-summary|<macro|body|<if|<greater|<screens-arity|<quote-arg|body>>|0>|<plus|<screens-index|<quote-arg|body>>|1>
   of <screens-arity|<quote-arg|body>>>>>
 
-  <assign|ftr|<macro|left|center|right|<with|color|<value|ftr-border-color>|<tabular*|<tformat|<twith|table-width|1par>|<twith|table-hmode|exact>|<cwith|1|1|1|-1|cell-background|<value|footer-bar-color>>|<cwith|1|1|1|1|cell-halign|c>|<style-with|src-compact|all|<twith|table-valign|b>>|<cwith|1|1|1|1|cell-tsep|0em>|<style-with|src-compact|all|<cwith|1|1|1|1|cell-bsep|0.004pag>>|<cwith|1|1|1|1|cell-tborder|0.001pag>|<cwith|1|1|1|1|cell-height|0.03pag>|<cwith|1|1|1|1|cell-vmode|auto>|<twith|table-height|0.02pag>|<twith|table-vmode|exact>|<cwith|1|1|1|1|cell-hyphen|t>|<twith|table-lsep|0>|<twith|table-rsep|0>|<twith|table-bsep|0>|<twith|table-tsep|0>|<twith|table-bborder|0>|<table|<row|<\cell>
+  <assign|ftr|<macro|left|center|right|<with|color|<value|ftr-border-color>|<tabular*|<tformat|<twith|table-width|1par>|<twith|table-hmode|exact>|<cwith|1|1|1|-1|cell-background|<value|footer-bar-color>>|<cwith|1|1|1|1|cell-halign|c>|<cwith|1|1|1|1|cell-tsep|0ex>|<style-with|src-compact|all|<cwith|1|1|1|1|cell-bsep|0em>>|<cwith|1|1|1|1|cell-tborder|<value|ftr-border-height>>|<cwith|1|1|1|1|cell-vmode|auto>|<twith|table-height|0.03pag>|<twith|table-vmode|exact>|<cwith|1|1|1|1|cell-hyphen|t>|<twith|table-lsep|0>|<twith|table-rsep|0>|<twith|table-bsep|0>|<twith|table-tsep|0>|<twith|table-bborder|0>|<cwith|1|1|1|1|cell-valign|c>|<twith|table-valign|f>|<table|<row|<\cell>
     <with|color|<value|footer-color>|math-color|<value|title-color>|font-size|0.59|<arg|left><htab|5mm><arg|center><htab|5mm><with|font-size|0.39|<arg|right>>>
   </cell>>>>>>>>
 
@@ -125,22 +144,32 @@
   <assign|tit|<\macro|head>
     <\with|par-left|<minus|<value|page-screen-left>>|par-right|<minus|<value|page-screen-right>>|par-par-sep|0fn|par-sep|0fn|par-ver-sep|0fn|par-line-sep|0fn>
       <\reduce-by>
-        <shift|<with|color|<value|tit-border-color>|<resize|<tabular*|<tformat|<twith|table-width|1par>|<twith|table-hmode|exact>|<cwith|1|1|1|-1|cell-background|<title-bar-color>>|<cwith|1|1|1|1|cell-halign|c>|<cwith|1|1|1|1|cell-hyphen|t>|<twith|table-valign|T>|<twith|table-vmode|auto>|<cwith|1|1|1|1|cell-height|0.05pag>|<cwith|1|1|1|1|cell-vmode|exact>|<cwith|1|1|1|1|cell-bborder|0.002pag>|<table|<row|<\cell>
+        <shift|<with|color|<value|tit-border-color>|<resize|<tabular*|<tformat|<twith|table-width|1par>|<twith|table-hmode|exact>|<cwith|1|1|1|-1|cell-background|<title-bar-color>>|<cwith|1|1|1|1|cell-halign|c>|<cwith|1|1|1|1|cell-hyphen|t>|<twith|table-valign|T>|<twith|table-vmode|auto>|<cwith|1|1|1|1|cell-height|0.05pag>|<cwith|1|1|1|1|cell-vmode|exact>|<cwith|1|1|1|1|cell-bborder|<value|tit-border-height>>|<table|<row|<\cell>
           <with|color|<value|title-color>|math-color|<value|title-color>|font-series|bold|<phantom|<title-left|<arg|head>>><htab|5mm><arg|head><htab|5mm><phantom|<title-right|xxx>>>
         </cell>>>>>||0em||>>|0mm|<value|page-screen-top>>
 
-        <shift|<ftr|<title-left|xxx>|<value|screens-running-footer>|<title-right|xxx>>|0mm|<minus|0.965pag>>
+        <shift|<ftr|<title-left|xxx>|<value|screens-running-footer>|<title-right|xxx>>|0mm|<minus|0.959pag>>
       <|reduce-by>
         1ex
       </reduce-by>
     </with>
   </macro>>
 
+  --- FIXME: this macro is hard to navigate with the cursor. Also, it leaves
+  lots of empty space at the top of the document.
+
   <assign|btit|<\macro|head>
     <\with|par-left|<minus|<value|page-screen-left>>|par-right|<minus|<value|page-screen-right>>|par-par-sep|0fn|par-sep|0fn|par-ver-sep|0fn|par-line-sep|0fn|par-hor-sep|0fn|par-mode|left>
-      <shift|<ftr|<value|screens-running-footer>|<arg|head>|<title-right|xxx>>|0mm|<minus|0.995pag>>
+      <reduce-by|<shift|<ftr|<value|screens-running-footer>|<arg|head>|<title-right|xxx>>|0mm|<minus|0.994pag>>|1ex>
     </with>
   </macro>>
+
+  \;
+
+  <drd-props|tit|border|no>
+
+  <drd-props|btit|border|yes> \ --- FIXME: make invisible when btit works
+  properly
 </body>
 
 <initial|<\collection>
